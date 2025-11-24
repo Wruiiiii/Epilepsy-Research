@@ -6,7 +6,7 @@ import numpy as np
 from scipy.signal import butter, cheby2, sosfiltfilt
 
 CONFIG = {
-    'run_hampel': False,
+    'run_hampel': True,
     'run_ica_inspect': True,
     'run_ica_plots': True,
     'run_ica_clean': False,
@@ -20,7 +20,9 @@ COMPONENTS_TO_EXCLUDE = {
     'XUSLEEPT100': [],
     'XUAWAKE7': [],
     'XUAWAKE60': [],
-    'XUAWAKET100': []
+    'XUAWAKET100': [],
+    'XUAWAKEPRE_deidentified': [],
+    'XUSLEEP_deidentified': []
 }
 # ===================================================================
 
@@ -247,7 +249,9 @@ if __name__ == "__main__":
     out_dir.mkdir(parents=True, exist_ok=True)
     plots_dir.mkdir(parents=True, exist_ok=True)
 
-    file_names = ["XUSLEEP7", "XUSLEEP60", "XUSLEEPT100", "XUAWAKE7", "XUAWAKE60", "XUAWAKET100"]
+    # file_names = ["XUSLEEP7", "XUSLEEP60", "XUSLEEPT100", "XUAWAKE7", "XUAWAKE60", "XUAWAKET100", "XUAWAKEPRE_deidentified", "XUSLEEPP_deidentified"]
+    file_names = ["XUSLEEP7", "XUAWAKE7", "XUAWAKEPRE_deidentified", "XUSLEEP_deidentified"]
+
 
     for name in file_names:
         raw_path = in_dir / f"{name}.EDF"
